@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人名片</title>
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================
+           步驟 1: 基本設定
+        ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* 背景顏色組合：
+            葡萄色：#667eea 0%, #764ba2 100%
+            藍綠色：#11998e 0%, #38ef7d 100%
+            粉紅色：#ff9a9e 0%, #fecfef 100%
+            橘黃色：#fa709a 0%, #fee140 100%
+        */
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        /* ==========================================
+           步驟 2: 名片容器
+        ========================================== */
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 450px;
+            width: 100%;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        /* ==========================================
+           步驟 3: 頂部裝飾
+        ========================================== */
+        .card-header {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            height: 150px;
+            position: relative;
+        }
+        
+        /* ==========================================
+           步驟 4: 大頭照
+        ========================================== */
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: white;
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        /* ==========================================
+           步驟 5: 個人資訊區
+        ========================================== */
+        .card-body {
+            padding: 70px 30px 30px;
+            text-align: center;
+        }
+        
+        .name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .title {
+            font-size: 1rem;
+            color: #11998e;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        
+        .bio {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        
+        /* ==========================================
+           步驟 6: 聯絡資訊
+        ========================================== */
+        .contact-info {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            color: #555;
+        }
+        
+        .contact-item i {
+            font-size: 1.2rem;
+            color: #11998e;
+            width: 30px;
+        }
+        
+        .contact-item span {
+            font-size: 0.9rem;
+        }
+        
+        /* ==========================================
+           步驟 7: 社群媒體按鈕
+        ========================================== */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-facebook {
+            background: #1877f2;
+            color: white;
+        }
+        
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+        }
+        
+        .btn-line {
+            background: #06c755;
+            color: white;
+        }
+        
+        .btn-github {
+            background: #333;
+            color: white;
+        }
+
+        .btn-youtube {
+            background: #ff0000;
+            color: white;
+        }
+        
+        /* ==========================================
+           步驟 8: 技能標籤
+        ========================================== */
+        .skills {
+            margin-top: 1.5rem;
+        }
+        
+        .skills-title {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .skill-tag {
+            background: #11998e;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        /* ==========================================
+           步驟 9: 響應式設計
+        ========================================== */
+        @media (max-width: 480px) {
+            .card {
+                max-width: 100%;
+            }
+            
+            .name {
+                font-size: 1.5rem;
+            }
+            
+            .social-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ==========================================
+         名片主體
+    ========================================== -->
+    <div class="card">
+        <!-- 頂部裝飾 -->
+        <div class="card-header">
+            <!-- 大頭照（可以換成圖片） -->
+            <div class="avatar">
+                <div class="avatar-inner">
+                    <i class="bi bi-person-circle"></i>
+                    <!-- 可以換成圖片 
+                        <img src="your-photo.jpg" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                    -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- 個人資訊 -->
+        <div class="card-body">
+            <!-- 姓名 -->
+            <h1 class="name">王小群</h1>
+            
+            <!-- 職稱/身份 -->
+            <p class="title">網頁前端開發 | 學習者</p>
+            
+            <!-- 簡短介紹 -->
+            <p class="bio">
+                熱愛創造美觀且實用的網頁體驗，<br>
+                正在學習前端開發的路上努力前進 💪
+            </p>
+            
+            <!-- 聯絡資訊 -->
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="bi bi-envelope-fill"></i>
+                    <span>w6150038@hotmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="bi bi-telephone-fill"></i>
+                    <span>0919-715146</span>
+                </div>
+                <div class="contact-item">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>臺中市, 臺灣</span>
+                </div>
+            </div>
+            
+            <!-- 社群媒體連結 -->
+            <div class="social-links">
+                <a href="https://facebook.com" class="social-btn btn-facebook" target="_blank">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="https://instagram.com" class="social-btn btn-instagram" target="_blank">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="https://line.me" class="social-btn btn-line" target="_blank">
+                    <i class="bi bi-line"></i>
+                </a>
+                <a href="https://github.com" class="social-btn btn-github" target="_blank">
+                    <i class="bi bi-github"></i>
+                </a>
+                <a href="https://youtube.com" class="social-btn btn-youtube" target="_blank">
+                    <i class="bi bi-youtube"></i>
+                </a>
+            </div>
+            
+            <!-- 技能標籤 -->
+            <div class="skills">
+                <p class="skills-title">技能</p>
+                <div class="skill-tags">
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Bootstrap</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

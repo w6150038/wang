@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>港都風味小館</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* ========================================== 
+           購物車浮動按鈕
+        ========================================== */
+        .cart-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #e74c3c;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(231, 76, 60, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .cart-float:hover {
+            transform: scale(1.1);
+            background: #c0392b;
+        }
+        
+        .cart-float i {
+            font-size: 1.5rem;
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #27ae60;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border: 3px solid white;
+        }
+        
+        .header {
+            text-align: center;
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        .restaurant-name {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .fa-bowl-food {
+            background: #3498db;
+            color: #eee;
+            font-size: 3.5rem;
+            border: 0px;
+            border-radius: 5px;
+        }
+        
+        .restaurant-tagline {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+        
+        .restaurant-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #555;
+        }
+        
+        .info-item i {
+            color: #3498db;
+            font-size: 1.2rem;
+        }
+        
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            background: white;
+            border: 2px solid #3498db;
+            color: #3498db;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        
+        .category-btn:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .category-btn.active {
+            background: #3498db;
+            color: white;
+        }
+        
+        .menu-section {
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* ========================================== 
+           隱藏分類功能
+        ========================================== */
+        .menu-section.hidden {
+            display: none;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #3498db;
+            display: inline-block;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .menu-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .item-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+        }
+        
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .badge.top1 { background: #e74c3c; }
+        .badge.top2 { background: #e67e22; }
+        .badge.top3 { background: #27ae60; }
+        .badge.recommend { background: #e970c5; }
+        .badge.spicy { background: #e87669; }
+        .badge.discount { background: #e67e22; }
+        
+        .item-info {
+            padding: 1.5rem;
+        }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.8rem;
+        }
+        
+        .item-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .item-inline {
+            display: inline-block;
+        }
+
+        .item-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3498db;
+        }
+        
+        .price-old {
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .price-old::before {
+            content: "×";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(2);
+            color: red;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .item-price.discount {
+            color: #e74c3c;
+        }
+
+        .item-description {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .item-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stars {
+            color: #3498db;
+        }
+        
+        .rating-count {
+            color: #95a5a6;
+            font-size: 0.85rem;
+        }
+
+        .fa-thumbs-up {
+            color: orange;
+        }
+        
+        .order-btn {
+            width: 100%;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .order-btn:hover {
+            background: #58ade5;
+            transform: scale(1.05);
+        }
+        
+        /* ========================================== 
+           已加入購物車的按鈕樣式
+        ========================================== */
+        .order-btn.added {
+            background: #27ae60;
+        }
+        
+        .order-btn.added:hover {
+            background: #229954;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .footer-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-info {
+            color: #7f8c8d;
+            line-height: 1.8;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        .cart-float.bounce {
+            animation: bounce 0.3s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .restaurant-name {
+                font-size: 2rem;
+            }
+            
+            .restaurant-info {
+                gap: 1rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-nav {
+                gap: 0.5rem;
+            }
+            
+            .category-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 購物車浮動按鈕 -->
+        <div class="cart-float" onclick="showCart()">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-badge" id="cartCount">0</span>
+        </div>
+        
+        <header class="header">
+            <h1 class="restaurant-name"><i class="fa-solid fa-bowl-food"></i> 港都風味小館</h1>
+            <p class="restaurant-tagline">用心、服務、讚不絕口</p>
+            
+            <div class="restaurant-info">
+                <div class="info-item">
+                    <i class="bi bi-telephone-fill"></i>
+                    <span>04-26585678</span>
+                </div>
+                <div class="info-item">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>台中市清水區美食路 100 號</span>
+                </div>
+                <div class="info-item">
+                    <i class="bi bi-clock-fill"></i>
+                    <span>11:00 - 21:00</span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- 分類按鈕 -->
+        <nav class="category-nav">
+            <button class="category-btn active" onclick="filterCategory('all')">全部菜單</button>
+            <button class="category-btn" onclick="filterCategory('main')">主菜類</button>
+            <button class="category-btn" onclick="filterCategory('vegetarian')">蔬食類</button>
+            <button class="category-btn" onclick="filterCategory('soup')">湯品類</button>
+            <button class="category-btn" onclick="filterCategory('drink')">飲料類</button>
+        </nav>
+        
+        <!-- 主菜類 -->
+        <section class="menu-section" data-category="main">
+            <h2 class="section-title">🍖 主菜類</h2>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-image">
+                        <span><img width="96" height="96" src="https://img.icons8.com/color/96/noodles.png" alt="noodles"/></span>
+                        <span class="badge top1">TOP 1</span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h3 class="item-name">原味紅燒牛肉麵</h3>
+                            <span class="item-price">$180</span>
+                        </div>
+                        <p class="item-description">
+                            牛香濃郁、湯頭厚實，每一口都是紅燒的靈魂。
+                        </p>
+                        <div class="item-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count"><i class="fa-solid fa-thumbs-up"></i> (532)</span>
+                        </div>
+                        <button class="order-btn" onclick="addToCart(this, '原味紅燒牛肉麵', 180)">
+                            <i class="bi bi-cart-plus"></i>
+                            加入購物車
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image">
+                        <span><img width="96" height="96" src="https://img.icons8.com/emoji/96/dumpling-emoji.png" alt="dumpling-emoji"/></span>
+                        <span class="badge top2">TOP 2</span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h3 class="item-name">清香雞湯餃</h3>
+                            <span class="item-price">$130</span>
+                        </div>
+                        <p class="item-description">
+                            皮薄湯鮮，咬下就是幸福的滋味。
+                        </p>
+                        <div class="item-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count"><i class="fa-solid fa-thumbs-up"></i> (473)</span>
+                        </div>
+                        <button class="order-btn" onclick="addToCart(this, '清香雞湯餃', 130)">
+                            <i class="bi bi-cart-plus"></i>
+                            加入購物車
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image">
+                        <span><img width="96" height="96" src="https://img.icons8.com/color/96/rice-bowl.png" alt="rice-bowl"/></span>
+                        <span class="badge top3">TOP 3</span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h3 class="item-name">香滷排骨飯</h3>
+                            <span class="item-price">$110</span>
+                        </div>
+                        <p class="item-description">
+                            滷香入骨、飯香撲鼻，一碗最經典的家常味。
+                        </p>
+                        <div class="item-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count"><i class="fa-solid fa-thumbs-up"></i> (532)</span>
+                        </div>
+                        <button class="order-btn" onclick="addToCart(this, '香滷排骨飯', 110)">
+                            <i class="bi bi-cart-plus"></i>
+                            加入購物車
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 蔬食類 -->
+        <section class="menu-section" data-category="vegetarian">
+            <h2 class="section-title">🥦 蔬食類</h2>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-image">
+                        <span><img width="96" height="96" src="https://img.icons8.com/fluency/96/rice-bowl.png" alt="rice-bowl"/></span>
+                        <span class="badge recommend">⭐ 推薦</span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h3 class="item-name">三杯鮮菇燴飯</h3>
+                            <span class="item-price">$110</span>
+                        </div>
+                        <p class="item-description">
+                            九層塔香撲鼻、醬汁滑潤，每一口都是滿滿鮮香與滿足。
+                        </p>
+                        <div class="item-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count"><i class="fa-solid fa-thumbs-up"></i> (237)</span>
+                        </div>
+                        <button class="order-btn" onclick="addToCart(this, '三杯鮮菇燴飯', 110)">
+                            <i class="bi bi-cart-plus"></i>
+                            加入購物車
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image">
+                        <span><img width="96" height="96" src="https://img.icons8.com/external-goofy-flat-kerismaker/96/external-Breakfast-hotel-service-goofy-flat-kerismaker.png" alt="Breakfast"/></span>
+                        <span class="badge spicy">🌶️ 微辣</span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h3 class="item-name">韓式泡菜蛋餅</h3>
+                            <span class="item-price">$55</span>
+                        </div>
+                        <p class="item-description">
+                            泡菜的辣香遇上蛋香的柔滑，咬下瞬間滿口香氣爆發！
+                        </p>
+                        <div class="item-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count"><i class="fa-solid fa-thumbs-up"></i> (502)</span>
+                        </div>
+                        <button class="order-btn" onclick="addToCart(this, '韓式泡菜蛋餅', 55)">
+                            <i class="bi bi-cart-plus"></i>
+                            加入購物車
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image">
+                        <span><img width="100" height="100" src="https://img.icons8.com/plasticine/100/noodles.png" alt="noodles"/></span>
+                        <span class="badge discount">🏷️ 特價</span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h3 class="item-name">招牌鐵板麵</h3>
+                            <div class="item-inline">
+                                <span class="item-price price-old">$65</span><span class="item-price discount">&nbsp;$55</span>
+                            </div>
+                        </div>
+                        <p class="item-description">
+                            滋滋作響的香氣讓人食指大動，一口麵、一口醬，幸福剛剛好。
+                        </p>
+                        <div class="item-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count"><i class="fa-solid fa-thumbs-up"></i> (586)</span>
+                        </div>
+                        <button class="order-btn" onclick="addToCart(this, '招牌鐵板麵', 55)">
+                            <i class="bi bi-cart-plus"></i>
+                            加入購物車
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 湯品類 -->
+        <section class="menu-section" data-category="soup">
+            <h2 class="section-title">🍲 湯品類</h2>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-image">
+                        <span><img width="100" height="100" src="https://img.icons8.com/plasticine/100/miso-soup.png" alt="miso-soup"/></span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h3 class="item-name">鮮肉餛飩湯</h3>
+                            <span class="item-price">$80</span>
+                        </div>
+                        <p class="item-description">
+                            湯清味鮮、餛飩滑嫩，一碗最樸實的溫暖滋味。
+                        </p>
+                        <div class="item-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count"><i class="fa-solid fa-thumbs-up"></i> (156)</span>
+                        </div>
+                        <button class="order-btn" onclick="addToCart(this, '鮮肉餛飩湯', 80)">
+                            <i class="bi bi-cart-plus"></i>
+                            加入購物車
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image">
+                        <span><img width="100" height="100" src="https://img.icons8.com/carbon-copy/100/miso-soup.png" alt="miso-soup"/></span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h3 class="item-name">清香燉雞湯</h3>
+                            <span class="item-price">$130</span>
+                        </div>
+                        <p class="item-description">
+                            雞湯清香撲鼻、入口鮮甜，每一口都暖進心裡。
+                        </p>
+                        <div class="item-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count"><i class="fa-solid fa-thumbs-up"></i> (225)</span>
+                        </div>
+                        <button class="order-btn" onclick="addToCart(this, '清香燉雞湯', 130)">
+                            <i class="bi bi-cart-plus"></i>
+                            加入購物車
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 飲料類 -->
+        <section class="menu-section" data-category="drink">
+            <h2 class="section-title">🥤 飲料類</h2>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-image">
+                        <span><img width="96" height="96" src="https://img.icons8.com/color/96/soda-cup.png" alt="soda-cup"/></span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h3 class="item-name">蜜香紅茶</h3>
+                            <span class="item-price">$20</span>
+                        </div>
+                        <p class="item-description">
+                            茶韻柔和、蜜香回甘，一口滿是自然的甜潤。
+                        </p>
+                        <div class="item-rating">
+                            <span class="stars">★★★☆☆</span>
+                            <span class="rating-count"><i class="fa-solid fa-thumbs-up"></i> (73)</span>
+                        </div>
+                        <button class="order-btn" onclick="addToCart(this, '蜜香紅茶', 20)">
+                            <i class="bi bi-cart-plus"></i>
+                            加入購物車
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="item-image">
+                        <span><img width="100" height="100" src="https://img.icons8.com/external-icongeek26-linear-colour-icongeek26/64/external-Milk-Tea-tea-icongeek26-linear-colour-icongeek26.png" alt="Milk Tea"/></span>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-header">
+                            <h3 class="item-name">經典奶茶</h3>
+                            <span class="item-price">$30</span>
+                        </div>
+                        <p class="item-description">
+                            茶香與奶香交融，最純粹的經典滋味。
+                        </p>
+                        <div class="item-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count"><i class="fa-solid fa-thumbs-up"></i> (53)</span>
+                        </div>
+                        <button class="order-btn" onclick="addToCart(this, '經典奶茶', 30)">
+                            <i class="bi bi-cart-plus"></i>
+                            加入購物車
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <h3 class="footer-title">📍 店家資訊</h3>
+            <div class="footer-info">
+                <p>營業時間：週一至週日 11:00 - 21:00</p>
+                <p>電話：04-26585678</p>
+                <p>地址：台中市清水區美食路 100 號</p>
+                <p style="margin-top: 1rem; color: #3498db;">
+                    ❤️ 歡迎內用 · 可外帶 · 接受訂位
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // ==========================================
+        // JavaScript 教學：餐廳菜單互動功能
+        // ==========================================
+        
+        // 步驟 1: 宣告全域變數儲存購物車數量
+        let cartCount = 0;
+        
+        // ==========================================
+        // 功能 1: 分類篩選功能
+        // ==========================================
+        function filterCategory(category) {
+            // 取得所有分類按鈕
+            const buttons = document.querySelectorAll('.category-btn');
+            
+            // 移除所有按鈕的 active 類別
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // 為被點擊的按鈕加上 active 類別
+            event.target.classList.add('active');
+            
+            // 取得所有菜單區塊
+            const sections = document.querySelectorAll('.menu-section');
+            
+            if (category === 'all') {
+                // 顯示全部分類
+                sections.forEach(section => {
+                    section.classList.remove('hidden');
+                });
+            } else {
+                // 只顯示特定分類
+                sections.forEach(section => {
+                    const sectionCategory = section.getAttribute('data-category');
+                    
+                    if (sectionCategory === category) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // 平滑滾動到第一個可見的菜單區塊
+            const firstVisible = document.querySelector('.menu-section:not(.hidden)');
+            if (firstVisible) {
+                firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        
+        // ==========================================
+        // 功能 2: 加入購物車功能
+        // ==========================================
+        function addToCart(button, itemName, price) {
+            // 增加購物車數量
+            cartCount++;
+            
+            // 更新購物車數字顯示
+            document.getElementById('cartCount').textContent = cartCount;
+            
+            // 改變按鈕樣式表示已加入
+            button.classList.add('added');
+            button.innerHTML = '<i class="bi bi-check-circle"></i> 已加入';
+            
+            // 購物車圖示跳動動畫
+            const cartFloat = document.querySelector('.cart-float');
+            cartFloat.classList.add('bounce');
+            
+            // 0.3秒後移除動畫
+            setTimeout(() => {
+                cartFloat.classList.remove('bounce');
+            }, 300);
+            
+            // 在控制台顯示訊息（學習用）
+            console.log(`已加入購物車: ${itemName} - ${price}`);
+            console.log(`目前購物車商品數量: ${cartCount}`);
+            
+            // 1.5秒後恢復按鈕原狀（可選功能）
+            setTimeout(() => {
+                button.classList.remove('added');
+                button.innerHTML = '<i class="bi bi-cart-plus"></i> 加入購物車';
+            }, 1500);
+        }
+        
+        // ==========================================
+        // 功能 3: 顯示購物車內容（進階功能）
+        // ==========================================
+        function showCart() {
+            if (cartCount === 0) {
+                alert('購物車是空的！\n快來點些美食吧 😋');
+            } else {
+                alert(`購物車商品數量: ${cartCount} 項\n\n點擊「確定」繼續選購\n或聯絡我們完成訂單！`);
+            }
+        }
+        
+        // ==========================================
+        // 額外功能：頁面載入時的初始化
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ 菜單系統載入完成！');
+            console.log('📋 分類篩選功能已啟用');
+            console.log('🛒 購物車功能已啟用');
+        });
+        
+        // ==========================================
+        // 學習重點總結：
+        // 1. 變數 (let cartCount = 0)
+        // 2. 函數 (function filterCategory() {...})
+        // 3. DOM 操作 (querySelector, classList)
+        // 4. 條件判斷 (if...else)
+        // 5. 陣列操作 (forEach)
+        // 6. 事件處理 (onclick)
+        // 7. 定時器 (setTimeout)
+        // ==========================================
+
+        // ==========================================
+        // 回到頂部按鈕（額外功能）
+        // ==========================================
+        function createBackToTopButton() {
+            // 建立按鈕
+            const backToTop = document.createElement('button');
+            backToTop.innerHTML = '<i class="bi bi-arrow-up"></i>';
+            backToTop.className = 'back-to-top';
+            backToTop.style.cssText = `
+                position: fixed;
+                bottom: 90px;
+                right: 30px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: #2563eb;
+                color: white;
+                border: none;
+                cursor: pointer;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 1000;
+                box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            `;
+    
+            document.body.appendChild(backToTop);
+    
+            // 顯示/隱藏按鈕
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTop.style.opacity = '1';
+                    backToTop.style.visibility = 'visible';
+                } else {
+                    backToTop.style.opacity = '0';
+                    backToTop.style.visibility = 'hidden';
+                }
+            });
+    
+            // 點擊回到頂部
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+    
+            // Hover 效果
+            backToTop.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 6px 20px rgba(37, 99, 235, 0.4)';
+            });
+    
+            backToTop.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 4px 15px rgba(37, 99, 235, 0.3)';
+            });
+        }
+
+        // 啟用回到頂部按鈕
+        createBackToTopButton();
+    </script>
+</body>
+</html> 

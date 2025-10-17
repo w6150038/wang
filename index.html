@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王小群 - 網頁前端開發</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Bootstrap SweetAlert -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Serif+TC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/justfont/webfonts/taipei-sans.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/justfont/webfonts/jf-openhuninn.css" rel="stylesheet">
+    <base href="/wang/">
+    <link href="style.css" rel="stylesheet">
+    <link href="bootstrapcolor.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-color fixed-top">
+        <div class="container">
+            <div class="brand">
+                <img src="images/logo.png" class="img_logo rounded-circle">
+                <a class="navbar-brand fw-bold" href="#home">王小群網頁前端開發</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">關於我</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">技能</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">專案</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">聯絡</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="hero-title">你好，我是<br><span style="color: var(--accent-color);">網頁前端開發者</span></h1>
+                        <p class="hero-subtitle">
+                            熱愛創造美觀且實用的網頁體驗，專注於現代化的前端技術開發
+                        </p>
+                        <a href="#projects" class="btn btn-lg cta-button text-white">
+                            查看我的作品 <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <div style="width: 300px; height: 300px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                            <i class="bi bi-code-slash" style="font-size: 8rem; color: rgba(255,255,255,0.8);"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 關於我 -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title fade-in">關於我</h2>
+            <p class="section-subtitle fade-in">
+                一位充滿熱忱的前端開發學習者，致力於創造優質的使用者體驗
+            </p>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="about-card fade-in">
+                        <div class="row align-items-center">
+                            <div class="col-md-4 text-center mb-4 mb-md-0">
+                                <div class="icon_person">
+                                    <i class="bi bi-person-circle" style="font-size: 5rem; color: white;"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h3 class="mb-3">王小群</h3>
+                                <p class="mb-3">
+                                    我是一位正在學習前端開發的新手，對於創造美觀且功能完整的網頁充滿熱忱。
+                                    雖然還在學習階段，但我每天都在進步，並且享受解決程式問題帶來的成就感。
+                                </p>
+                                <p class="mb-0">
+                                    <strong>學習目標：</strong> 成為一位全能的前端開發者，掌握現代化的開發技術和設計理念。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能 -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">我的技能</h2>
+            <p class="section-subtitle fade-in">
+                目前正在學習和掌握的前端開發技術
+            </p>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="bi bi-filetype-html"></i>
+                        </div>
+                        <h4 class="skill-title">HTML & CSS</h4>
+                        <p>掌握語義化 HTML 和現代 CSS，包括 Flexbox、Grid 佈局和響應式設計。</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="bi bi-filetype-js"></i>
+                        </div>
+                        <h4 class="skill-title">JavaScript</h4>
+                        <p>學習 JavaScript 基礎語法、DOM 操作和現代 ES6+ 特性。</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card fade-in">
+                        <div class="skill-icon">
+                            <i class="bi bi-bootstrap"></i>
+                        </div>
+                        <h4 class="skill-title">Bootstrap</h4>
+                        <p>使用 Bootstrap 框架快速建立響應式和美觀的使用者介面。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 專案作品 -->
+    <section id="projects" class="section project-section">
+        <div class="container">
+            <h2 class="section-title fade-in">我的專案</h2>
+            <p class="section-subtitle fade-in">
+                一些學習過程中完成的練習專案
+            </p>
+            
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card fade-in">
+                        <div class="project-image">
+                            <i class="bi bi-folder"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">專案</h4>
+                            <p>專案說明。</p>
+                            <div class="mb-3">
+                                <span class="project-tech">HTML</span>
+                                <span class="project-tech">CSS</span>
+                                <span class="project-tech">Bootstrap</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm">查看專案</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card fade-in">
+                        <div class="project-image">
+                            <i class="bi bi-menu-down"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">餐廳菜單</h4>
+                            <p>使用 Grid 佈局、卡片式設計建立的餐廳菜單，完成響應式排版。</p>
+                            <div class="mb-3">
+                                <span class="project-tech">HTML</span>
+                                <span class="project-tech">CSS</span>
+                                <span class="project-tech">JavaScript</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm">查看專案</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card fade-in">
+                        <div class="project-image">
+                            <i class="bi bi-card-heading"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">個人名片</h4>
+                            <p>使用 HTML、CSS 和 Bootstrap 建立的個人名片，支援各種裝置瀏覽。</p>
+                            <div class="mb-3">
+                                <span class="project-tech">HTML</span>
+                                <span class="project-tech">CSS</span>
+                                <span class="project-tech">Bootstrap</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm">查看專案</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡方式 -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title fade-in" style="color: white;">聯絡我</h2>
+            <p class="section-subtitle fade-in" style="color: rgba(255,255,255,0.8);">
+                歡迎與我聯繫，一起討論前端開發的相關話題
+            </p>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">
+                            <i class="bi-facebook"></i>
+                        </div>
+                        <h4>Facebook</h4>
+                        <p>www.facebook.com/w6150038</p>
+                        <img src="images/facebook.png" class="qrcode">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">
+                            <i class="bi bi-instagram"></i>
+                        </div>
+                        <h4>Instagram</h4>
+                        <p>www.instagram.com/danielwang0919</p>
+                        <img src="images/instagram.png" class="qrcode">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">
+                            <i class="bi bi-line"></i>
+                        </div>
+                        <h4>LINE</h4>
+                        <p>ID：w6150038</p>
+                        <img src="images/line.JPG" class="qrcode">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS（包含下拉與漢堡選單功能） -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+</body>
+</html>

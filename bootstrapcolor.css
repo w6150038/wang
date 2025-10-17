@@ -1,0 +1,168 @@
+/* 背景與文字色彩 */
+.bg-orange   { background-color: #fd7e14 !important; color: white !important; }
+.text-orange { color: #fd7e14 !important; }
+
+.bg-purple   { background-color: #6f42c1 !important; color: white !important; }
+.text-purple { color: #6f42c1 !important; }
+
+.bg-pink     { background-color: #d63384 !important; color: white !important; }
+.text-pink   { color: #d63384 !important; }
+
+.bg-indigo   { background-color: #6610f2 !important; color: white !important; }
+.text-indigo { color: #6610f2 !important; }
+
+.bg-cyan     { background-color: #0dcaf0 !important; color: black !important; }
+.text-cyan   { color: #0dcaf0 !important; }
+
+.bg-teal     { background-color: #20c997 !important; color: white !important; }
+.text-teal   { color: #20c997 !important; }
+
+/* orange 按鈕 */
+.btn-orange {
+  background-color: #fd7e14 !important;
+  color: white !important;
+  border: 1px solid #fd7e14 !important;
+}
+.btn-orange:hover {
+  filter: brightness(90%) !important;
+  color: white !important;
+}
+.btn-outline-orange {
+  background-color: transparent !important;
+  color: #fd7e14 !important;
+  border: 1px solid #fd7e14 !important;
+}
+.btn-outline-orange:hover {
+  background-color: #fd7e14 !important;
+  color: white !important;
+}
+
+/* purple 按鈕 */
+.btn-purple {
+  background-color: #6f42c1 !important;
+  color: white !important;
+  border: 1px solid #6f42c1 !important;
+}
+.btn-purple:hover {
+  filter: brightness(90%) !important;
+  color: white !important;
+}
+.btn-outline-purple {
+  background-color: transparent !important;
+  color: #6f42c1 !important;
+  border: 1px solid #6f42c1 !important;
+}
+.btn-outline-purple:hover {
+  background-color: #6f42c1 !important;
+  color: white !important;
+}
+
+/* pink 按鈕 */
+.btn-pink {
+  background-color: #d63384 !important;
+  color: white !important;
+  border: 1px solid #d63384 !important;
+}
+.btn-pink:hover {
+  filter: brightness(90%) !important;
+  color: white !important;
+}
+.btn-outline-pink {
+  background-color: transparent !important;
+  color: #d63384 !important;
+  border: 1px solid #d63384 !important;
+}
+.btn-outline-pink:hover {
+  background-color: #d63384 !important;
+  color: white !important;
+}
+
+/* indigo 按鈕 */
+.btn-indigo {
+  background-color: #6610f2 !important;
+  color: white !important;
+  border: 1px solid #6610f2 !important;
+}
+.btn-indigo:hover {
+  filter: brightness(90%) !important;
+  color: white !important;
+}
+.btn-outline-indigo {
+  background-color: transparent !important;
+  color: #6610f2 !important;
+  border: 1px solid #6610f2 !important;
+}
+.btn-outline-indigo:hover {
+  background-color: #6610f2 !important;
+  color: white !important;
+}
+
+/* cyan 按鈕 */
+.btn-cyan {
+  background-color: #0dcaf0 !important;
+  color: black !important;
+  border: 1px solid #0dcaf0 !important;
+}
+.btn-cyan:hover {
+  filter: brightness(90%) !important;
+  color: black !important;
+}
+.btn-outline-cyan {
+  background-color: transparent !important;
+  color: #0dcaf0 !important;
+  border: 1px solid #0dcaf0 !important;
+}
+.btn-outline-cyan:hover {
+  background-color: #0dcaf0 !important;
+  color: black !important;
+}
+
+/* teal 按鈕 */
+.btn-teal {
+  background-color: #20c997 !important;
+  color: white !important;
+  border: 1px solid #20c997 !important;
+}
+.btn-teal:hover {
+  filter: brightness(90%) !important;
+  color: white !important;
+}
+.btn-outline-teal {
+  background-color: transparent !important;
+  color: #20c997 !important;
+  border: 1px solid #20c997 !important;
+}
+.btn-outline-teal:hover {
+  background-color: #20c997 !important;
+  color: white !important;
+}
+
+/* orange 邊框 */
+.border-orange {
+  border: 1px solid #fd7e14 !important;
+}
+
+/* purple 邊框 */
+.border-purple {
+  border: 1px solid #6f42c1 !important;
+}
+
+/* pink 邊框 */
+.border-pink {
+  border: 1px solid #d63384 !important;
+}
+
+/* indigo 邊框 */
+.border-indigo {
+  border: 1px solid #6610f2 !important;
+}
+
+/* cyan 邊框 */
+.border-cyan {
+  border: 1px solid #0dcaf0 !important;
+}
+
+/* teal 邊框 */
+.border-teal {
+  border: 1px solid #20c997 !important;
+}

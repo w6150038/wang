@@ -1,0 +1,460 @@
+/* 配色方案說明：
+   主色：#2563eb (現代藍)
+   次色：#64748b (中性灰藍)
+   強調色：#06d6a0 (清新綠)
+   背景：#f8fafc (淺灰白)
+   深色：#1e293b (深藍灰)
+*/
+
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #64748b;
+    --accent-color: #06d6a0;
+    --light-bg: #f8fafc;
+    --dark-color: #1e293b;
+    --white: #ffffff;
+}
+
+/* ========================================
+   解決導航欄遮住錨點的問題
+======================================== */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* 導航欄高度 + 緩衝空間 */
+}
+
+/* 另一種寫法：針對每個 section */
+section[id] {
+    scroll-margin-top: 100px;
+}
+
+body {
+    font-family: 'jf open 粉圓', 'Taipei Sans TC Beta', 'Noto Serif TC', 'Inter', 'Poppins', 'Noto Sans TC', '微軟正黑體', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+}
+
+/* ========================================
+   導航欄樣式
+======================================== */
+
+/* nav 背景顏色 */
+.bg-color {
+    background: linear-gradient(90deg, #1e293b, #2c5364);
+}
+
+/* brand 容器 - 使用 Flexbox 排版 */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* logo 圖片 */
+.img_logo {
+    width: 60px;
+    height: 60px;
+    /* ========================================
+        object-fit: cover：
+            1. 控制圖片縮放與填充方式。
+            2. 圖片會等比縮放並填滿容器，超出的部分會被裁切。
+            3. 常用於背景圖、相簿封面。
+    ======================================== */
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* 品牌文字 */
+.brand .navbar-brand {
+    color: white;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    text-decoration: none;
+    margin: 0;
+}
+
+/* 導航連結 hover 效果 */
+.nav-link {
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-color) !important;
+}
+
+/* 當前頁面的導航連結 */
+.nav-link.active {
+    color: var(--accent-color) !important;
+    font-weight: 500;
+}
+
+/* ========================================
+   Hero Section 設計
+======================================== */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1e40af 100%);
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.cta-button {
+    background: var(--accent-color);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.cta-button:hover {
+    background: #05c195;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(6, 214, 160, 0.3);
+}
+
+/* ========================================
+   區段共用樣式
+======================================== */
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--dark-color);
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    margin-bottom: 4rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ========================================
+   關於我區段
+======================================== */
+.about-section {
+    background: var(--light-bg);
+}
+
+.about-card {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+}
+
+.icon_person {
+    width: 150px;
+    height: 150px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+/* ========================================
+   技能區段
+======================================== */
+.skill-card {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.skill-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.skill-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* ========================================
+   專案區段
+======================================== */
+.project-section {
+    background: var(--light-bg);
+}
+
+.project-card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.project-image {
+    height: 200px;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 3rem;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.project-tech {
+    display: inline-block;
+    background: var(--light-bg);
+    color: var(--primary-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ========================================
+   聯絡區段
+======================================== */
+.contact-section {
+    background: var(--dark-color);
+    color: var(--white);
+}
+
+.contact-item {
+    text-align: center;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: scale(1.05);
+}
+
+.contact-icon {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.qrcode {
+    width: 150px;
+    height: auto;
+    max-width: 100%
+}
+
+/* ========================================
+   動畫效果
+======================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========================================
+   響應式設計
+======================================== */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .section {
+        padding: 60px 0;
+    }
+    
+    /* 手機版：調整 logo 和文字大小 */
+    .img_logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .brand .navbar-brand {
+        font-size: 1rem;
+    }
+    
+    /* 手機版：減少錨點偏移 */
+    html {
+        scroll-padding-top: 80px;
+    }
+    
+    section[id] {
+        scroll-margin-top: 80px;
+    }
+
+    /* 🔥 新增：修正手機版導航欄 */
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+    
+    /* 確保 brand 在手機版正常排列 */
+    .brand {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 10px !important;
+    }
+    
+    /* 確保漢堡選單按鈕可見 */
+    .navbar-toggler {
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .navbar-toggler-icon {
+        width: 1.5em;
+        height: 1.5em;
+    }
+    
+    /* 手機版選單展開樣式 */
+    .navbar-collapse {
+        margin-top: 0.5rem;
+        padding: 1rem;
+        border-radius: 8px;
+    }
+    
+    /* 專案卡片手機版 */
+    .project-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* SweetAlert 手機版調整 */
+    .swal2-popup {
+        width: 90% !important;
+        padding: 20px !important;
+    }
+}
+
+/* ==========================================
+   SweetAlert2 關閉按鈕樣式
+======================================== */
+.swal2-close,
+.project-close-btn-custom {
+    display: block !important;
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    width: 40px !important;
+    height: 40px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 32px !important;
+    line-height: 40px !important;
+    text-align: center !important;
+    color: #9ca3af !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    z-index: 10000 !important;
+    transition: all 0.2s ease !important;
+}
+
+.swal2-close:hover,
+.project-close-btn-custom:hover {
+    color: #ef4444 !important;
+    background: #fee2e2 !important;
+    border-radius: 8px !important;
+    transform: scale(1.1) !important;
+}
+
+/* 確保彈窗本身有正確的定位 */
+.project-popup-custom {
+    position: relative !important;
+}
+
+.swal2-container {
+    z-index: 9999 !important;
+}
