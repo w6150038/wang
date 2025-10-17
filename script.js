@@ -195,8 +195,8 @@ const projectsData = {
             'Hover 互動效果',
             '標籤和評分系統'
         ],
-        link: 'profiles/menu/menu.html',
-        github: 'https://github.com/username/'
+        link: 'https://w6150038.github.io/wang/profiles/menu/menu.html',
+        github: 'https://github.com/w6150038/wang/tree/main/profiles/menu'
     },
     '個人名片': {
         description: '使用 HTML、CSS 和 Bootstrap 建立的個人名片，支援各種裝置瀏覽。採用 Mobile First 設計理念，確保在各種螢幕尺寸都有最佳體驗。',
@@ -207,8 +207,8 @@ const projectsData = {
             '配色協調',
             '漸層背景',
         ],
-        link: 'profiles/card/card.html',
-        github: 'https://github.com/username/'
+        link: 'https://w6150038.github.io/wang/profiles/card/card.html',
+        github: 'https://github.com/w6150038/wang/tree/main/profiles/card'
     }
 };
 
