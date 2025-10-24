@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>咖啡</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+        background-color: #555;
+    }
+
+    img {
+        height: 300px;
+    }
+
+    .card {
+        opacity: 0;
+        transform: translateY(40px);
+        /*
+        transition: all 0.5s ease;
+        */
+        transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.5s ease;
+        cursor: pointer;
+    }
+
+    .card:hover {
+        transform: scale(1.08);
+        box-shadow: 0 0 20px rgba(168, 234, 111, 0.8);
+    }
+
+    .card.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .card.active {
+        transform: scale(1.1);
+        background-color: #f8f9fa;
+        border: 3px solid #0d6efd;
+        box-shadow: 0 0 20px rgba(13, 110, 253, 0.5);
+    }
+
+    .card.active img {
+      filter: brightness(1.2)
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-5 text-center">
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card">
+        <img src="images/americano.jpg" class="card-img-top" alt="美式咖啡">
+        <div class="card-body">
+          <h5 class="card-title">美式咖啡</h5>
+          <p class="card-text">$70</p>
+          <button class="btn btn-primary changeBtn">點擊</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <img src="images/latte.jpg" class="card-img-top" alt="拿鐵">
+        <div class="card-body">
+          <h5 class="card-title">拿鐵</h5>
+          <p class="card-text">$100</p>
+          <button class="btn btn-primary changeBtn">點擊</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <img src="images/cappuccino.jpg" class="card-img-top" alt="卡布奇諾">
+        <div class="card-body">
+          <h5 class="card-title">卡布奇諾</h5>
+          <p class="card-text">$90</p>
+          <button class="btn btn-primary changeBtn">點擊</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const cards = document.querySelectorAll('.card');
+  const btns = document.querySelectorAll('.changeBtn');
+
+  window.addEventListener('load', () => {
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.add('show');
+      }, 500 * index);
+    });
+  });
+
+  const originalImages = ['images/americano.jpg', 'images/latte.jpg', 'images/cappuccino.jpg'];
+  const newImages = ['images/americano2.jpg', 'images/latte2.jpg', 'images/cappuccino2.jpg'];
+  const titles = ['美式咖啡', '拿鐵', '卡布奇諾'];
+  const prices = ['$70', '$100', '$90'];
+  const texts = ['不花俏、卻最經典。', '奶味與咖啡味平衡。', '入口有蓬鬆感。'];
+
+  cards.forEach((card, index) => {
+    const btn = card.querySelector('.changeBtn');
+    const img = card.querySelector('.card-img-top');
+    const title = card.querySelector('.card-title');
+    const text = card.querySelector('.card-text');
+
+    const toggleCard = () => {
+      card.classList.toggle('active');
+
+      if (card.classList.contains('active')) {
+        img.src = newImages[index];
+        title.textContent += '（熱賣中）';
+        text.textContent = texts[index];
+        btn.textContent = '還原';
+      } else {
+        img.src = originalImages[index];
+        title.textContent = titles[index];
+        text.textContent = prices[index];
+        btn.textContent = '點擊';
+      }
+    };
+
+  // 點擊整張卡片也能切換
+  card.addEventListener('click', (e) => {
+    // 🔸 避免「點按鈕」時重複觸發
+    if (e.target.classList.contains('changeBtn')) return;
+    toggleCard();
+  });
+
+  // 點擊按鈕也能切換
+  btn.addEventListener('click', toggleCard);
+});
+
+</script>
+</body>
+</html>
