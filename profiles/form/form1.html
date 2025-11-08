@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML Form</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Noto Sans TC', sans-serif;
+                background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+                min-height: 100vh;
+            }
+
+            .btnCenter {
+                text-align: center;
+            }
+            
+            .btn {
+                background-color: #6495ED;
+                color: white;
+                margin-right: 5px;
+            }
+
+            .btn:hover {
+                color: #FFE4C4;
+                background-color: #6495ED;
+            }
+
+            #bgColor {
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <div class="container py-3">
+                <h2 class="fw-bold mb-3 text-center">Text Input Field</h2>
+                <form method="post" action="https://www.w3schools.com/action_page.php" target="_blank" autocomplete="off">
+                    <p>請輸入姓名與學號：</p>
+                    <label for="className">姓名：</label>
+                    <input type="text" id="className" name="className" placeholder="請輸入姓名">&nbsp;
+                    <label for="classID">學號：</label>
+                    <input type="text" id="classID" name="classID" placeholder="請輸入學號">
+                    <hr>
+                    
+                    <p>請選擇您使用的瀏覽器：</p>
+                    <input type="radio" id="edge" name="fav_browser" value="edge">
+                    <label for="edge">Microsoft Edge</label>&emsp;
+                    <input type="radio" id="chrome" name="fav_browser" value="chrome">
+                    <label for="chrome">Google Chrome</label>&emsp;
+                    <input type="radio" id="firefox" name="fav_browser" value="firefox">
+                    <label for="firefox">Mozilla Firefox</label>
+                    <hr>
+                    
+                    <p>請選擇您喜歡的球類：</p>
+                    <input type="checkbox" id="bedminton" name="fav_sport" value="bedminton">
+                    <label for="bedminton">羽球</label>&nbsp;
+                    <input type="checkbox" id="baseball" name="fav_sport" value="baseball">
+                    <label for="baseball">棒球</label>&nbsp;
+                    <input type="checkbox" id="basketball" name="fav_sport" value="basketball">
+                    <label for="basketball">籃球</label>&nbsp;
+                    <input type="checkbox" id="tennis" name="fav_sport" value="tennis">
+                    <label for="tennis">網球</label>
+                    <hr>
+
+                    <label for="city">居住縣市：</label>&nbsp;
+                    <select id="city" name="city">
+                        <option>=== 請選擇 ===</option>
+                        <option value="臺北市">臺北市</option>
+                        <option value="新北市">新北市</option>
+                        <option value="桃園市">桃園市</option>
+                        <option value="臺中市" selected>臺市市</option>
+                        <option value="臺南市">臺南市</option>
+                        <option value="高雄市">高雄市</option>
+                    </select>
+                    <hr>
+
+                    <label for="cityCode">郵遞區號：</label>&nbsp;
+                    <select id="cityCode" name="cityCode">
+                        <optgroup label="臺北市">
+                            <option value="100 中正區">100 中正區</option>
+                            <option value="103 大同區">103 大同區</option>
+                            <option value="104 中山區">104 中山區</option>
+                        </optgroup>
+                        <optgroup label="新北市">
+                            <option value="207 萬里區">207 萬里區</option>
+                            <option value="208 金山區">208 金山區</option>
+                            <option value="220 板橋區">220 板橋區</option>
+                        </optgroup>
+                        <optgroup label="桃園市">
+                            <option value="320 中壢區">320 中壢區</option>
+                            <option value="324 平鎮區">324 平鎮區</option>
+                            <option value="325 龍潭區">325 龍潭區</option>
+                        </optgroup>
+                    </select>
+                    <hr>
+
+                    <label for="vehicle">交通工具 (按 Ctrl 可複選)：</label><br />
+                    <select id="vehicle" name="vehicle" style="width: 100px;" multiple>
+                        <option value="步行">步行</option>
+                        <option value="機車">機車</option>
+                        <option value="汽車">汽車</option>
+                        <option value="公車" selected>公車</option>
+                        <option value="捷運">捷運</option>
+                        <option value="火車">火車</option>
+                    </select>
+                    <hr>
+                    
+                    <p>請簡單介紹自己：</p>
+                    <textarea style="width: 400px; height: 200px;" placeholder="請輸入內容"></textarea>
+                    <hr>
+
+                    <fieldset>
+                        <legend>社團名稱</legend>
+                        <input type="radio" id="popmusicClub" name="club" value="popmusicClub">
+                        <label for="popmusicClub">熱門音樂社</label>&emsp;
+                        <input type="radio" id="popdanceClub" name="club" value="popdanceClub">
+                        <label for="popdanceClub">熱門舞蹈社</label>&emsp;
+                        <input type="radio" id="recreationClub" name="club" value="recreationClub">
+                        <label for="recreationClub">康樂社</label>&nbsp;
+                        <input type="radio" id="computerClub" name="club" value="computerClub">
+                        <label for="computerClub">電腦社</label>&nbsp;
+                        <input type="radio" id="bedmintonClub" name="club" value="bedmintonClub">
+                        <label for="bedmintonClub">羽球社</label>&nbsp;
+                        <input type="radio" id="baseketballClub" name="club" value="baseketballClub">
+                        <label for="recreationClub">康樂社</label>&nbsp;
+                    </fieldset>
+                    <hr>
+
+                    <p>請輸入手機廠牌：</p>
+                    <input list="brands" name="brand">
+                    <datalist id="brands">
+                        <option value="Apple"></option>
+                        <option value="Asus"></option>
+                        <option value="hTC"></option>
+                        <option value="OPPO"></option>
+                        <option value="Samsung"></option>
+                        <option value="小米"></option>
+                    </datalist>
+                    <hr>
+                    <button type="submit" class="btn">送出</button>
+                    <button type="reset" class="btn">重新填寫</button>
+                    <button type="button" class="btn" onclick="alert('你到底在幹什麼！😂')">Alert</button>
+                </form>
+            </div>
+            <hr>
+        </section>
+
+        <section>
+            <div class="container py-3">
+                <div class="row row-cols-md-2">
+                    <div class="col mb-5">
+                        <h4 class="fw-bold mb-3 text-center">調整範圍計算數字(基楚版)</h4>
+                        <form method="post" action="https://www.w3schools.com/action_page.php" target="_blank" oninput="x.value = parseInt(a.value) + parseInt(b.value)">
+                            0 <input type="range" id="a" name="a" value="0" min="0" max="100"> 100
+                            &nbsp;+&nbsp;
+                            0 <input type="range" id="b" name="b" value="0" min="0" max="100"> 100
+                            <p>
+                                計算結果：<output id="x" name="x" for="a b">0</output>
+                            </p>
+                        </form>
+                    </div>
+                    <div class="col mb-5">
+                        <h4 class="fw-bold mb-3 text-center">調整範圍計算數字(進階版)</h4>
+                        <form method="post" action="https://www.w3schools.com/action_page.php" target="_blank">
+                            <div class="row row-cols-md-2">
+                                <div class="col">
+                                    <p class="text-center">
+                                        C = <span id="valueC">0</span><br />
+                                        0 <input type="range" id="c" name="c" value="0" min="0" max="100"> 100
+                                    </p>
+                                </div>
+                                <div class="col">
+                                    <p class="text-center">
+                                        D = <span id="valueD">0</span><br />
+                                        0 <input type="range" id="d" name="d" value="0" min="0" max="100"> 100
+                                    </p>
+                                </div>
+                                <p>
+                                    計算結果：<output id="y" name="y" for="c d">0</output>
+                                </p>
+                            </div>
+                        </form>
+                        <script>
+                            let c = document.getElementById('c');
+                            let d = document.getElementById('d');
+                            let valueC = document.getElementById('valueC');
+                            let valueD = document.getElementById('valueD');
+                            let y = document.getElementById('y');
+
+                            function updateValues() {
+                                const cValue = parseInt(c.value);
+                                const dValue = parseInt(d.value);
+                                valueC.innerHTML = cValue;
+                                valueD.innerHTML = dValue;
+                                y.value = cValue + dValue;
+                            };
+
+                            updateValues();
+
+                            c.addEventListener('input', updateValues);
+                            d.addEventListener('input', updateValues);
+                        </script>
+                    </div>
+                    <div class="col mb-5">
+                        <h4 class="fw-bold mb-3 text-center">調整範圍改變文字</h4>
+                        <form method="post" action="https://www.w3schools.com/action_page.php" target="_blank">
+                            0 分 <input type="range" id="s" name="s" value="0" min="0" max="100"> 100 分
+                            <p>
+                                您的分數：<span id="score" class="me-3"></span>
+                                您的等級：<output id="grade" name="grade" for="s"></output>
+                            </p>
+                        </form>
+                        <script>
+                            let s = document.getElementById('s');
+                            let scrore = document.getElementById('score');
+                            let grade = document.getElementById('grade');
+
+                            function updateGrades() {
+                                const sValue = parseInt(s.value);
+                                score.innerHTML = sValue;
+
+                                if (sValue < 60) {
+                                    grade.value = '初級';
+                                } else if (sValue < 90) {
+                                    grade.value = '中級';
+                                } else {
+                                    grade.value = '高級';
+                                }
+                            };
+
+                            updateGrades();
+
+                            s.addEventListener('input', updateGrades);
+                        </script>
+                    </div>
+                    <div class="col mb-5">
+                        <h4 class="fw-bold mb-3 text-center">調整範圍改變字體大小</h4>
+                        <form method="post" action="https://www.w3schools.com/action_page.php" target="_blank">
+                            10px <input type="range" id="px" name="px" value="15" min="10" max="50"> 50px<br />
+                            字體大小：<span id="fontSize">15</span>px
+                            <p>
+                                <span id="text">網頁設計</span>
+                            </p>
+                        </form>
+                        <script>
+                            let px = document.getElementById('px');
+                            let fontSize = document.getElementById('fontSize');
+                            let text = document.getElementById('text');
+
+                            function updateSize() {
+                                const pxValue = parseInt(px.value);
+                                fontSize.innerHTML = pxValue;
+                                text.style.fontSize = `${pxValue}px`;
+                            };
+
+                            updateSize();
+
+                            px.addEventListener('input', updateSize);
+                        </script>
+                    </div>
+                    <div class="col mb-5">
+                        <h4 class="fw-bold mb-3 text-center">調整範圍改變背景與文字顏色</h4>
+                        <form method="post" action="https://www.w3schools.com/action_page.php" target="_blank">
+                            調整顏色：<input type="range" id="colorRange" name="colorRange" value="0" min="0" max="4">
+                            <span id="colorIndex">0</span>
+                            <div id="bgColor" class="bg-danger text-white d-flex justify-content-center align-items-center" style="width: 80px; height: 80px">
+                                <p id="textColor">紅色</p>
+                            </div>
+                        </form>
+                        <script>
+                            let bgColors = ['bg-danger', 'bg-warning', 'bg-primary', 'bg-success', 'bg-dark'];
+                            let textColors = ['紅色', '黃色', '藍色', '綠色', '黑色'];
+                            let colorRange = document.getElementById('colorRange');
+                            let colorIndex = document.getElementById('colorIndex');
+                            let bgColor = document.getElementById('bgColor');
+                            let textColor = document.getElementById('textColor');
+
+                            
+                            function changeColors() {
+                                const colorRangeValue = parseInt(colorRange.value);
+                                colorIndex.innerHTML = colorRangeValue;
+                                bgColors.forEach(bg => bgColor.classList.remove(bg));
+                                bgColor.classList.add(bgColors[colorRangeValue]);
+                                textColor.innerHTML = textColors[colorRangeValue];
+
+                                if (bgColors[colorRangeValue] === 'bg-warning') {
+                                    bgColor.classList.remove('text-white');
+                                    bgColor.classList.add('text-dark');
+                                } else {
+                                    bgColor.classList.remove('text-dark');
+                                    bgColor.classList.add('text-white');
+                                };
+                            };
+
+                            changeColors();
+
+                            colorRange.addEventListener('input', changeColors);
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

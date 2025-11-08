@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML Input Types</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Noto Sans TC', sans-serif;
+                background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+                min-height: 100vh;
+            }
+
+            .minus, .plus {
+                background-color: inherit;
+                border: 0;
+            }
+
+            .btnCenter {
+                text-align: center;
+            }
+            
+            .btn {
+                background-color: #6495ED;
+                color: white;
+                margin-right: 5px;
+            }
+
+            .btn:hover {
+                color: #FFE4C4;
+                background-color: #6495ED;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- label 標記裡面的 for 是對應 input 標記裡面的 id -->
+        <section>
+            <div class="container py-3">
+                <h2 class="fw-bold mb-3 text-center">HTML Input Types</h2>
+                <form class="border rounded p-4 bg-white shadow-sm" method="post" action="https://www.w3schools.com/action_page.php" target="_blank" autocomplete="off">
+                    <h4 class="mb-3">文字輸入類型</h4>
+                    <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 g-3 mb-4">
+                        <div class="col mb-2">
+                            <label for="text" class="form-label">姓名：</label>
+                            <input type="text" id="text" name="name" class="form-control" placeholder="請輸入姓名">
+                        </div>
+                        <div class="col mb-2">
+                            <label for="password" class="form-label">密碼：</label>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="請輸入密碼">
+                        </div>
+                        <div class="col mb-2">
+                            <label for="email" class="form-label">電子信箱：</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="name@example.com">
+                        </div>
+                        <div class="col mb-2">
+                            <label for="tel" class="form-label">電話號碼：</label>
+                            <input type="tel" id="tel" name="tel" class="form-control" placeholder="0912-345678">
+                        </div>
+                        <div class="col mb-2">
+                            <label for="url" class="form-label">個人網站：</label>
+                            <input type="url" id="url" name="url" class="form-control" placeholder="https://example.com">
+                        </div>
+                    </div>
+
+                    <h4 class="mb-3">選項類型</h4>
+                    <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 g-3 mb-4">
+                        <div class="col mb-2">
+                            <label for="gender" class="form-label d-block">性別：</label>
+                            <input type="radio" id="male" name="gender" value="male">
+                            <label for="male" class="form-label me-3">男</label>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female" class="form-label">女</label>
+                        </div>
+                        <div class="col mb-2">
+                            <label for="hobby" class="form-label d-block">學歷：</label>
+                            <input type="checkbox" id="sport" name="hobby" value="sport">
+                            <label for="sport" class="form-label me-3">運動</label>
+                            <input type="checkbox" id="music" name="hobby" value="music">
+                            <label for="music" class="form-label me-3">音樂</label>
+                            <input type="checkbox" id="travel" name="hobby" value="travel">
+                            <label for="travel" class="form-label me-3">旅行</label>
+                            <input type="checkbox" id="movie" name="hobby" value="movie">
+                            <label for="movie" class="form-label">電影</label>
+                        </div>
+                    </div>
+
+                    <h4 class="mb-3">數值與選擇</h4>
+                    <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 g-3 mb-4">
+                        <div class="col mb-2">
+                            <label for="age" class="form-label">年齡：</label>
+                            <div class="input-group" style="width: 120px;">
+                                <input type="number" id="age" name="age" class="form-control" min="1" max="120">
+                                <span class="input-group-text">歲</span>
+                            </div>
+                        </div>
+                        <div class="col mb-2">
+                            <label for="satisfaction" class="form-label d-block">滿意度：</label>
+                            <button type="button" class="minus">➖</button>&nbsp;
+                            <input type="range" id="satisfaction" name="satisfaction" value="5" min="1" max="10">&nbsp;
+                            <button type="button" class="plus">➕</button>&emsp;
+                            <output id="rangeValue">5 分</output>
+                            <script>
+                                const satisfaction = document.getElementById('satisfaction');
+                                const minus = document.querySelector('.minus');
+                                const plus = document.querySelector('.plus');
+                                const rangeValue = document.getElementById('rangeValue');
+
+                                function updateValues() {
+                                    rangeValue.innerHTML = `${satisfaction.value} 分`;
+                                };
+
+                                // 初始化顯示
+                                updateValues();
+
+                                // 滑桿變動時更新
+                                satisfaction.addEventListener('input', updateValues);
+
+                                // parseInt() 是用來把「字串」轉成「整數」的函式。
+                                // parseInt(字串, 進位制)。
+                                // 第二個參數是「進位制（radix）」，也就是告訴 JavaScript：
+                                // 這個字串要用什麼進位制來解讀。
+                                // 所以 parseInt(satisaction.value, 10) 就代表用 10 進位制來解讀。
+                                
+                                // 減號
+                                minus.addEventListener('click', (e) => {
+                                    // 若沒把按鈕設 type="button"，可額外防止預設送出：
+                                    // e.preventDefault();
+                                    let value = parseInt(satisfaction.value, 10);
+                                    if (value > parseInt(satisfaction.min, 10)) {
+                                        value --;
+                                        satisfaction.value = value;
+                                        updateValues();
+                                    };
+                                });
+
+                                // 加號
+                                plus.addEventListener('click', (e) => {
+                                    // e.preventDefault();
+                                    let value = parseInt(satisfaction.value, 10);
+                                    if (value < parseInt(satisfaction.max, 10)) {
+                                        value ++;
+                                        satisfaction.value = value;
+                                        updateValues();
+                                    };
+                                 });
+                            </script>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </body>
+</html>

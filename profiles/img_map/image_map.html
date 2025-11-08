@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML Image Maps</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+                background-color: #555;
+                font-family: "Microsoft JhengHei", sans-serif;
+            }
+            
+            .title {
+                color: #eee;
+                background-color: #20B2AA;
+            }
+
+            .container {
+                width: 700px;
+                padding: 20px;
+            }
+
+            .reference {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+            }
+
+            .ref_text {
+                color: #87CEFA;
+            }
+
+            a:link {
+                color: green;
+                background-color: transparent;
+                text-decoration: none;
+            }
+
+            a:visited {
+                color: pink;
+                background-color: transparent;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: #F5FFFA;
+                background-color: transparent;
+                text-decoration: none;
+            }
+
+            a:active {
+                color: yellow;
+                background-color: transparent;
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="text-center m-3">
+          <span class="fs-3 fw-bold rounded p-2 title">圖片定位超連結</span>
+        </p>
+
+        <div class="container d-flex justify-content-between align-items-center">
+            <img src="images/workplace.jpg" usemap="#workplace">
+
+            <map name="workplace">
+                <area target="_blank" alt="Google" title="Google" href="https://www.google.com/" coords="21,27,181,231" shape="rect">
+                <area target="_blank" alt="手機王" title="手機王" href="https://www.sogi.com.tw/" coords="191,108,224,167" shape="rect">
+                <area target="_blank" alt="路易莎" title="路易莎" href="https://www.louisacoffee.co/" coords="222,198,32" shape="circle">
+            </map>
+          
+            <img src="images/food.jpg" usemap="#food">
+
+            <map name="food">
+                <area target="_blank" alt="馬可先生" title="馬可先生" href="https://www.mrmark.com.tw/index.php/" coords="68,50,83,52,92,72,92,89,87,120,69,137,52,155,31,158,15,147,18,100" shape="poly">
+                <area target="_blank" alt="方師傅" title="方師傅" href="https://www.masterfang.com.tw/" coords="128,127,195,145,181,192,154,202,125,176" shape="poly">
+                <area target="_blank" alt="聖弘花藝" title="聖弘花藝" href="https://shenghongflower.com/" coords="31,163,96,161,100,185,123,219,125,244,118,264,87,298,20,293,3,244" shape="poly">
+            </map>
+        </div>
+
+        <div class="reference">
+            <span class="ref_text">圖片座標製作：</span><a href="https://www.image-map.net/" alt="Image Map Generator" title="Image Map Generator" target="_blank">Image Map Generator</a>
+        </div>
+    </body>
+</html>

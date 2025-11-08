@@ -174,17 +174,102 @@ function setupButtonHover() {
 // 專案資料庫
 // ==========================================
 const projectsData = {
-    '專案': {
-        description: '專案說明',
-        tech: '使用技術',
+    '簡易 JavaScript': {
+        description: '簡易的 JS 應用。',
+        tech: 'HTML5, CSS3, DIV',
         features: [
-            '特色',
-            '特色',
-            '特色',
-            '特色'
+            '顯示現在日期與時間。',
+            '改變內容、樣式、圖片。',
+            'let 宣告變數。',
+            '單一按鈕、函式、if 判斷。'
         ],
-        link: '',
-        github: 'https://github.com/username/'
+        link: 'https://w6150038.github.io/wang/profiles/js/js.html',
+        github: 'https://github.com/w6150038/wang/tree/main/profiles/js'
+    },
+    'DIV 區塊': {
+        description: '多種排版應用。',
+        tech: 'HTML5, CSS3, DIV',
+        features: [
+            '讓 DIV 區塊置中。',
+            'Float、Inline-block、Flex、Grid 多種應用。'
+        ],
+        link: 'https://w6150038.github.io/wang/profiles/div/div.html',
+        github: 'https://github.com/w6150038/wang/tree/main/profiles/div'
+    },
+    'Id 選擇器': {
+        description: '用 Id 選擇器控制網頁元素。',
+        tech: 'HTML5, CSS3, JavaScript',
+        features: [
+            '單一按鈕控制單一事件。',
+            '按下按鈕顯示與隱藏文字。'
+        ],
+        link: 'https://w6150038.github.io/wang/profiles/id/id.html',
+        github: 'https://github.com/w6150038/wang/tree/main/profiles/id'
+    },
+    'Class 選擇器': {
+        description: '用 Class 選擇器控制網頁元素。',
+        tech: 'HTML5, CSS3, JavaScript',
+        features: [
+            '單一按鈕控制單一事件。',
+            'For 迴圈基本應用。',
+            '按下按鈕顯示與隱藏文字。'
+        ],
+        link: 'https://w6150038.github.io/wang/profiles/class/class.html',
+        github: 'https://github.com/w6150038/wang/tree/main/profiles/class'
+    },
+    'List 超連結清單': {
+        description: '用 &lt;ul&gt; 建立超連結清單。',
+        tech: 'HTML5, CSS3',
+        features: [
+            'flexbox 排版。',
+            'CSS 美化。',
+            '滑鼠碰到超連結有 Hover 變換顏色效果。'
+        ],
+        link: 'https://w6150038.github.io/wang/profiles/table/table.html',
+        github: 'https://github.com/w6150038/wang/tree/main/profiles/table'
+    },
+    '網頁表格應用': {
+        description: '建立表格與美化表格。',
+        tech: 'HTML5, CSS3, Image Map',
+        features: [
+            '用 HTML 建立表格，並且用 CSS 美化表格。',
+            'colspan 與 rowspan 合併欄位。',
+            '用 Zebra Striped 班馬條紋美化表格。',
+            '滑鼠碰到表格有 Hover 變換顏色效果。'
+        ],
+        link: 'https://w6150038.github.io/wang/profiles/table/table.html',
+        github: 'https://github.com/w6150038/wang/tree/main/profiles/table'
+    },
+    '圖片定位超連結': {
+        description: '使用 Image Map Generator 工具建立超連結區域。',
+        tech: 'HTML5, CSS3, Image Map',
+        features: [
+            '點擊圖片區域可連結至對應的網站。'
+        ],
+        link: 'https://w6150038.github.io/wang/profiles/img_map_image_map.html',
+        github: 'https://github.com/w6150038/wang/tree/main/profiles/img_map'
+    },
+    '水果清單': {
+        description: '卡片式設計，modal 彈跳視窗，搭配水果風 icon 圖示。',
+        tech: 'HTML5, CSS3, Bootstrap 5, JavaScript',
+        features: [
+            '點擊按鈕後跳出 modal 視窗',
+            'modal 視窗按下關閉按鈕或在任何地方滑鼠點一下可關閉視窗。',
+            '卡片使用 forEach 迴圈設計。'
+        ],
+        link: 'https://w6150038.github.io/wang/profiles/fruit/fruit.html',
+        github: 'https://github.com/w6150038/wang/tree/main/profiles/fruit'
+    },
+    '咖啡菜單': {
+        description: '卡片式設計，滑鼠碰到菜單後有發光效果，點擊後卡片有放大效果。',
+        tech: 'HTML5, CSS3, Bootstrap 5, JavaScript',
+        features: [
+            '網頁載入動畫效果',
+            '按點擊按鈕與卡片本身皆可觸發切換功能。',
+            '點擊卡片後會更換圖片。'
+        ],
+        link: 'https://w6150038.github.io/wang/profiles/coffee/coffee.html',
+        github: 'https://github.com/w6150038/wang/tree/main/profiles/coffee'
     },
     '餐廳菜單': {
         description: '使用 Grid 佈局、卡片式設計建立的餐廳菜單，並且加入標籤、評分系統、購物車、計數器功能，完成響應式排版。',

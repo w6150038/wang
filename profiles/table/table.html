@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML Table</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Noto Sans TC', sans-serif;
+                background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+                min-height: 100vh;
+            }
+
+            /* Collapsed Table Borders */
+            .ctb {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+
+            .ctb th {
+                text-align: center;
+            }
+
+            .ctb th, .ctb td {
+                border: 1px solid black;
+                padding: 5px;
+            }
+
+            /* Style Table Borders */
+            .stb {
+                border: 1px solid black;
+                border-collapse: collapse;
+                background-color: #FFF8DC;
+            }
+
+            .stb th {
+                text-align: center;
+            }
+            
+            .stb th, .stb td {
+                border: 1px solid black;
+                padding: 5px;
+            }
+
+            /* Round Table Borders */
+            .rtb {
+                border: 0;
+                border-collapse: separate;
+            }
+
+            .rtb th {
+                text-align: center;
+            }
+
+            .rtb th, .rtb td {
+                border: 1px solid red;
+                border-collapse: collapse;
+                border-radius: 10px;
+                padding: 5px;
+            }
+
+            /* Solid Table Borders */
+            .soltb {
+                border: 0;
+                border-collapse: separate;
+            }
+
+            .soltb th {
+                text-align: center;
+            }
+
+            .soltb th, .soltb td {
+                border: 5px solid red;
+                padding: 5px;
+            }
+
+            /* Dotted Table Borders */
+            .dottb {
+                border: 0;
+                border-collapse: separate;
+            }
+
+            .dottb th {
+                text-align: center;
+            }
+
+            .dottb th, .dottb td {
+                border: 5px dotted red;
+                padding: 5px;
+            }
+
+            /* Dashed Table Borders */
+            .dastb {
+                border: 0;
+                border-collapse: separate;
+            }
+
+            .dastb th {
+                text-align: center;
+            }
+
+            .dastb th, .dastb td {
+                border: 5px dashed red;
+                padding: 5px;
+            }
+
+            /* Double Table Borders */
+            .doutb {
+                border: 0;
+                border-collapse: separate;
+            }
+
+            .doutb th {
+                text-align: center;
+            }
+
+            .doutb th, .doutb td {
+                border: 5px double red;
+                padding: 5px;
+            }
+
+            /* Groove Table Borders */
+            .grotb {
+                border: 0;
+                border-collapse: separate;
+            }
+
+            .grotb th {
+                text-align: center;
+            }
+
+            .grotb th, .grotb td {
+                border: 5px groove red;
+                padding: 5px;
+            }
+
+            /* Ridge Table Borders */
+            .ridtb {
+                border: 0;
+                border-collapse: separate;
+            }
+
+            .ridtb th {
+                text-align: center;
+            }
+
+            .ridtb th, .ridtb td {
+                border: 5px ridge red;
+                padding: 5px;
+            }
+
+            /* Inset Table Borders */
+            .instb {
+                border: 0;
+                border-collapse: separate;
+            }
+
+            .instb th {
+                text-align: center;
+            }
+
+            .instb th, .instb td {
+                border: 5px inset red;
+                padding: 5px;
+            }
+
+            /* Outset Table Borders */
+            .outtb {
+                border: 0;
+                border-collapse: separate;
+            }
+
+            .outtb th {
+                text-align: center;
+            }
+
+            .outtb th, .outtb td {
+                border: 5px outset red;
+                padding: 5px;
+            }
+
+            /* Colspan */
+            .colspan {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+
+            .colspan th {
+                text-align: center;
+            }
+
+            .colspan th, .colspan td {
+                border: 1px solid black;
+                padding: 5px;
+            }
+
+             /* Rowspan */
+            .rowspan {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+
+            .rowspan th {
+                text-align: center;
+            }
+
+            .rowspan th, .rowspan td {
+                border: 1px solid black;
+                padding: 5px;
+            }
+
+            /* Horizontal Zebra Striped Table (even 偶數) */
+            .hzst_even {
+                border: 0;
+                border-collapse: collapse;
+            }
+
+            .hzst_even th {
+                text-align: center;
+            }
+
+            .hzst_even th, .hzst_even td {
+                padding: 5px;
+            }
+
+            .hzst_even tr:nth-child(even) {
+                background-color: #00CED1;
+            }
+
+            /* Horizontal Zebra Striped Table (odd 奇數) */
+            .hzst_odd {
+                border: 0;
+                border-collapse: collapse;
+            }
+
+            .hzst_odd th {
+                text-align: center;
+            }
+
+            .hzst_odd th, .hzst_odd td {
+                padding: 5px;
+            }
+
+            .hzst_odd tr:nth-child(odd) {
+                background-color: #00CED1;
+            }
+
+            /* Horizontal Zebra Striped Table (nth-of-type(3n)) */
+            /* 3*0, 3*1, 3*2...依此類推 */
+            .hzst_not3n {
+                border: 0;
+                border-collapse: collapse;
+            }
+
+            .hzst_not3n th {
+                text-align: center;
+            }
+
+            .hzst_not3n th, .hzst_not3n td {
+                padding: 5px;
+            }
+
+            .hzst_not3n tr:nth-of-type(3n) {
+                background-color: #00CED1;
+            }
+
+            /* Horizontal Zebra Striped Table (nth-of-type(3n+1)) */
+            /* 3*0+1, 3*1+1, 3*2+1...依此類推 */
+            .hzst_not3n1 {
+                border: 0;
+                border-collapse: collapse;
+            }
+
+            .hzst_not3n1 th {
+                text-align: center;
+            }
+
+            .hzst_not3n1 th, .hzst_not3n1 td {
+                padding: 5px;
+            }
+
+            .hzst_not3n1 tr:nth-of-type(3n+1) {
+                background-color: #00CED1;
+            }
+
+            /* Vertical Zebra Striped Table */
+            .vzst {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+
+            .vzst th {
+                text-align: center;
+            }
+            .vzst th, .vzst td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                width: 10%;
+                padding: 5px;
+            }
+
+            .vzst th:nth-child(even), .vzst td:nth-child(even) {
+                background-color: #B0C4DE;
+            }
+
+            /* Combine Zebra Striped Table */
+            .czst {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+
+            .czst th {
+                text-align: center;
+            }
+            .czst th, .czst td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                width: 10%;
+                padding: 5px;
+            }
+
+            .czst tr:nth-child(even) {
+                background-color: rgba(176, 196, 222, 0.8);
+            }
+
+            .czst th:nth-child(even), .czst td:nth-child(even) {
+                background-color: rgba(176, 196, 222, 0.8);
+            }
+
+            /* Horizontal Table Dividers */
+            .htd {
+                border-collapse: collapse;
+            }
+
+            .htd th {
+                text-align: center;
+            }
+
+            .htd tr {
+                border-bottom: 2px solid #fff;
+            }
+
+            /* Horizontal Hover Table */
+            .hht {
+                border-collapse: collapse;
+            }
+
+            .hht th {
+                text-align: center;
+            }
+
+            .hht th, .hht td {
+                padding: 5px;
+                border-bottom: 2px solid #fff;
+            }
+
+            .hht tr:nth-of-type(n+2):hover {
+                background-color: #D6EEEE;
+            }
+
+            /* HTML Table Colgroup */
+            .htc, .htc th, .htc td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                width: 10%;
+            }
+
+            .htc th {
+                text-align: center;
+            }
+
+            /* HTML Table Hide Columns */
+            .hthc, .hthc th, .hthc td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                width: 10%;
+            }
+
+            .hthc th {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <div class="container py-3">
+                <h2 class="fw-bold mb-3 text-center">Collapsed Table Borders</h2>
+                <table style="width: 100%;" class="ctb">
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Age</th>
+                    </tr>
+                    <tr>
+                        <td>Jill</td>
+                        <td>Smith</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>Eve</td>
+                        <td>Jackson</td>
+                        <td>94</td>
+                    </tr>
+                    <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>80</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <div class="container py-3">
+                <h2 class="fw-bold mb-3 text-center">Style Table Borders</h2>
+                <table style="width: 100%;" class="stb">
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Age</th>
+                    </tr>
+                    <tr>
+                        <td>Jill</td>
+                        <td>Smith</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>Eve</td>
+                        <td>Jackson</td>
+                        <td>94</td>
+                    </tr>
+                    <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>80</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <div class="container py-3">
+                <h2 class="fw-bold mb-3 text-center">Round Table Borders</h2>
+                <table style="width: 100%;" class="rtb">
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Age</th>
+                    </tr>
+                    <tr>
+                        <td>Jill</td>
+                        <td>Smith</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>Eve</td>
+                        <td>Jackson</td>
+                        <td>94</td>
+                    </tr>
+                    <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>80</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <div class="container py-3">
+                <div class="row row-cols-md-2">
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">Solid Table Borders</h2>
+                        <table style="width: 100%;" class="soltb">
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Age</th>
+                            </tr>
+                            <tr>
+                                <td>Jill</td>
+                                <td>Smith</td>
+                                <td>50</td>
+                            </tr>
+                            <tr>
+                                <td>Eve</td>
+                                <td>Jackson</td>
+                                <td>94</td>
+                            </tr>
+                            <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>80</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">Dotted Table Borders</h2>
+                        <table style="width: 100%;" class="dottb">
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Age</th>
+                            </tr>
+                            <tr>
+                                <td>Jill</td>
+                                <td>Smith</td>
+                                <td>50</td>
+                            </tr>
+                            <tr>
+                                <td>Eve</td>
+                                <td>Jackson</td>
+                                <td>94</td>
+                            </tr>
+                            <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>80</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">Dashed Table Borders</h2>
+                        <table style="width: 100%;" class="dastb">
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Age</th>
+                            </tr>
+                            <tr>
+                                <td>Jill</td>
+                                <td>Smith</td>
+                                <td>50</td>
+                            </tr>
+                            <tr>
+                                <td>Eve</td>
+                                <td>Jackson</td>
+                                <td>94</td>
+                            </tr>
+                            <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>80</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">Double Table Borders</h2>
+                        <table style="width: 100%;" class="doutb">
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Age</th>
+                            </tr>
+                            <tr>
+                                <td>Jill</td>
+                                <td>Smith</td>
+                                <td>50</td>
+                            </tr>
+                            <tr>
+                                <td>Eve</td>
+                                <td>Jackson</td>
+                                <td>94</td>
+                            </tr>
+                            <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>80</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">Groove Table Borders</h2>
+                        <table style="width: 100%;" class="grotb">
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Age</th>
+                            </tr>
+                            <tr>
+                                <td>Jill</td>
+                                <td>Smith</td>
+                                <td>50</td>
+                            </tr>
+                            <tr>
+                                <td>Eve</td>
+                                <td>Jackson</td>
+                                <td>94</td>
+                            </tr>
+                            <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>80</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">Ridge Table Borders</h2>
+                        <table style="width: 100%;" class="ridtb">
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Age</th>
+                            </tr>
+                            <tr>
+                                <td>Jill</td>
+                                <td>Smith</td>
+                                <td>50</td>
+                            </tr>
+                            <tr>
+                                <td>Eve</td>
+                                <td>Jackson</td>
+                                <td>94</td>
+                            </tr>
+                            <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>80</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">Inset Table Borders</h2>
+                        <table style="width: 100%;" class="instb">
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Age</th>
+                            </tr>
+                            <tr>
+                                <td>Jill</td>
+                                <td>Smith</td>
+                                <td>50</td>
+                            </tr>
+                            <tr>
+                                <td>Eve</td>
+                                <td>Jackson</td>
+                                <td>94</td>
+                            </tr>
+                            <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>80</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">Outset Table Borders</h2>
+                        <table style="width: 100%;" class="outtb">
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Age</th>
+                            </tr>
+                            <tr>
+                                <td>Jill</td>
+                                <td>Smith</td>
+                                <td>50</td>
+                            </tr>
+                            <tr>
+                                <td>Eve</td>
+                                <td>Jackson</td>
+                                <td>94</td>
+                            </tr>
+                            <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>80</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container py-3">
+                <div class="row row-cols-md-1">
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">Colspan</h2>
+                        <table style="width: 100%;" class="colspan">
+                            <tr>
+                                <th>姓名</th>
+                                <th colspan="2">電話</th>
+                                <th>地址</th>
+                            </tr>
+                            <tr>
+                                <td>王小群</td>
+                                <td>0919-123456</td>
+                                <td>0982-345678</td>
+                                <td>臺中市清水區大勇路 1 號</td>
+                            </tr>
+                            <tr>
+                                <td>張小雯</td>
+                                <td>0920-333666</td>
+                                <td>04-22551233</td>
+                                <td>臺中市梧棲區五七路 8 號 3 樓</td>
+                            </tr>
+                            <tr>
+                                <td>周大明</td>
+                                <td>0982-246789</td>
+                                <td>04-25502255</td>
+                                <td>臺中市沙鹿區沙大路 502 號 8 樓</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">Rowspan</h2>
+                        <table style="width: 100%;" class="rowspan">
+                            <tr>
+                                <th>姓名</th>
+                                <td>王小群</td>
+                                <td>張小雯</td>
+                                <td>周大明</td>
+                            </tr>
+                            <tr>
+                                <th rowspan="2">電話</th>
+                                <td>0919-123456</td>
+                                <td>0920-333666</td>
+                                <td>0982-246789</td>
+                            </tr>
+                            <tr>
+                                <td>0982-345678</td>
+                                <td>04-22551233</td>
+                                <td>04-25502255</td>
+                            </tr>
+                            <tr>
+                                <th>地址</th>
+                                <td>臺中市清水區大勇路 1 號</td>
+                                <td>臺中市梧棲區五七路 8 號 3 樓</td>
+                                <td>臺中市沙鹿區沙大路 502 號 8 樓</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container py-3">
+                <div class="row row-cols-md-2">
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">Horizontal Zebra Striped Table (even 偶數)</h2>
+                        <table style="width: 100%" class="hzst_even">
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Points</th>
+                            </tr>
+                            <tr>
+                                <td>Peter</td>
+                                <td>Griffin</td>
+                                <td>$100</td>
+                            </tr>
+                            <tr>
+                                <td>Lois</td>
+                                <td>Griffin</td>
+                                <td>$150</td>
+                            </tr>
+                            <tr>
+                                <td>Joe</td>
+                                <td>Swanson</td>
+                                <td>$300</td>
+                            </tr>
+                            <tr>
+                                <td>Cleveland</td>
+                                <td>Brown</td>
+                                <td>$250</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">Horizontal Zebra Striped Table (odd 奇數)</h2>
+                        <table style="width: 100%" class="hzst_odd">
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Points</th>
+                            </tr>
+                            <tr>
+                                <td>Peter</td>
+                                <td>Griffin</td>
+                                <td>$100</td>
+                            </tr>
+                            <tr>
+                                <td>Lois</td>
+                                <td>Griffin</td>
+                                <td>$150</td>
+                            </tr>
+                            <tr>
+                                <td>Joe</td>
+                                <td>Swanson</td>
+                                <td>$300</td>
+                            </tr>
+                            <tr>
+                                <td>Cleveland</td>
+                                <td>Brown</td>
+                                <td>$250</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">Horizontal Zebra Striped Table (nth-of-type(3n))</h2>
+                        <table style="width: 100%" class="hzst_not3n">
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Points</th>
+                            </tr>
+                            <tr>
+                                <td>Peter</td>
+                                <td>Griffin</td>
+                                <td>$100</td>
+                            </tr>
+                            <tr>
+                                <td>Lois</td>
+                                <td>Griffin</td>
+                                <td>$150</td>
+                            </tr>
+                            <tr>
+                                <td>Joe</td>
+                                <td>Swanson</td>
+                                <td>$300</td>
+                            </tr>
+                            <tr>
+                                <td>Cleveland</td>
+                                <td>Brown</td>
+                                <td>$250</td>
+                            </tr>
+                            <tr>
+                                <td>Mark</td>
+                                <td>Wang</td>
+                                <td>$400</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">Horizontal Zebra Striped Table (nth-of-type(3n+1))</h2>
+                        <table style="width: 100%" class="hzst_not3n1">
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Points</th>
+                            </tr>
+                            <tr>
+                                <td>Peter</td>
+                                <td>Griffin</td>
+                                <td>$100</td>
+                            </tr>
+                            <tr>
+                                <td>Lois</td>
+                                <td>Griffin</td>
+                                <td>$150</td>
+                            </tr>
+                            <tr>
+                                <td>Joe</td>
+                                <td>Swanson</td>
+                                <td>$300</td>
+                            </tr>
+                            <tr>
+                                <td>Cleveland</td>
+                                <td>Brown</td>
+                                <td>$250</td>
+                            </tr>
+                            <tr>
+                                <td>Mark</td>
+                                <td>Wang</td>
+                                <td>$400</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">Vertical Zebra Striped Table</h2>
+                        <table style="width:100%" class="vzst">
+                            <tr>
+                                <th>MON</th>
+                                <th>TUE</th>
+                                <th>WED</th>
+                                <th>THU</th>
+                                <th>FRI</th>
+                                <th>SAT</th>
+                                <th>SUN</th>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">Combine Zebra Striped Table</h2>
+                        <table style="width:100%" class="czst">
+                            <tr>
+                                <th>MON</th>
+                                <th>TUE</th>
+                                <th>WED</th>
+                                <th>THU</th>
+                                <th>FRI</th>
+                                <th>SAT</th>
+                                <th>SUN</th>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container py-3">
+                <h2 class="fw-bold mb-3 text-center">Horizontal Table Dividers</h2>
+                <table style="width: 100%;" class="htd">
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Age</th>
+                    </tr>
+                    <tr>
+                        <td>Jill</td>
+                        <td>Smith</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>Eve</td>
+                        <td>Jackson</td>
+                        <td>94</td>
+                    </tr>
+                    <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>80</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <div class="container py-3">
+                <h2 class="fw-bold mb-3 text-center">Horizontal Hover Table</h2>
+                <table style="width: 100%;" class="hht">
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Age</th>
+                    </tr>
+                    <tr>
+                        <td>Jill</td>
+                        <td>Smith</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>Eve</td>
+                        <td>Jackson</td>
+                        <td>94</td>
+                    </tr>
+                    <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>80</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <div class="container py-3">
+                <div class="row row-cols-md-2">
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">HTML Table Colgroup</h2>
+                        <table style="width:100%" class="htc">
+                            <colgroup>
+                                <col span="1" style="background-color: pink;">
+                                <col span="5">
+                                <col span="1" style="background-color: pink;">
+                            </colgroup>
+                            <tr>
+                                <th>SUN</th>
+                                <th>MON</th>
+                                <th>TUE</th>
+                                <th>WED</th>
+                                <th>THU</th>
+                                <th>FRI</th>
+                                <th>SAT</th>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col mb-5">
+                        <h2 class="fw-bold mb-3 text-center">HTML Table Hide Columns</h2>
+                        <table style="width:100%" class="hthc">
+                            <colgroup>
+                                <col span="1" style="background-color: pink;">
+                                <!-- 隱藏 MON, TUE, WED-->
+                                <col span="3" style="visibility: collapse;">
+                                <col span="2">
+                                <col span="1" style="background-color: pink;">
+                            </colgroup>
+                            <tr>
+                                <th>SUN</th>
+                                <th>MON</th>
+                                <th>TUE</th>
+                                <th>WED</th>
+                                <th>THU</th>
+                                <th>FRI</th>
+                                <th>SAT</th>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
